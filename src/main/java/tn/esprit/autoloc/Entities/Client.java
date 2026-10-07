@@ -4,11 +4,12 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class Client {
@@ -34,4 +35,8 @@ public class Client {
 
     @Column(nullable = false)
     private LocalDate dateInscription;
+
+
+    @OneToMany(mappedBy = "client", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    private List<Reservation> reservations = new ArrayList<>();
 }

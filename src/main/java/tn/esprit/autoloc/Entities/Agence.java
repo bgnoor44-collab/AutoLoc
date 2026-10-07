@@ -3,10 +3,12 @@ package tn.esprit.autoloc.Entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class Agence {
@@ -26,4 +28,11 @@ public class Agence {
 
     @Column(length = 20)
     private String telephone;
+
+
+    @OneToMany(mappedBy = "agence", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    private List<Employee> employees = new ArrayList<>();
+
+    @OneToMany(mappedBy = "agence", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    private List<Vehicule> vehicules = new ArrayList<>();
 }

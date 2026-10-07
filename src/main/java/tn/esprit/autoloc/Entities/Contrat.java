@@ -5,11 +5,12 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class Contrat {
@@ -26,4 +27,12 @@ public class Contrat {
 
     @Column(nullable = false)
     private Boolean valide;
+
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "reservation_id", nullable = false, unique = true)
+    private Reservation reservation;
+
+    @OneToMany(mappedBy = "contrat", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    private List<Paiement> paiements = new ArrayList<>();
 }
