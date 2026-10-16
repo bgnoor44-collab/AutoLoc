@@ -1,0 +1,15 @@
+package tn.esprit.autoloc.Services;
+
+import tn.esprit.autoloc.Entities.Reservation;
+
+import java.util.List;
+import java.util.Set;
+
+public interface IReservation {
+    Reservation ajouterReservation(Reservation reservation);
+    void supprimerReservation(Long id);
+
+    List<Reservation> recupererReservations();
+    Set<Reservation> findReservations();
+    Reservation recupererReservationById(Long id);
+}
