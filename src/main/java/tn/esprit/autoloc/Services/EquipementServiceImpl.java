@@ -1,12 +1,14 @@
 package tn.esprit.autoloc.Services;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import tn.esprit.autoloc.Entities.Equipement;
 import tn.esprit.autoloc.Repositories.EquipementRepository;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+@Service
 
 @RequiredArgsConstructor
 public class EquipementServiceImpl implements IEquipement {

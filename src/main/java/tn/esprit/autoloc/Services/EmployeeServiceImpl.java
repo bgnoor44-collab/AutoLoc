@@ -2,6 +2,7 @@ package tn.esprit.autoloc.Services;
 
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.stereotype.Service;
 import tn.esprit.autoloc.Entities.Employee;
 import tn.esprit.autoloc.Repositories.EmployeeRepository;
 
@@ -9,6 +10,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@Service
 
 @RequiredArgsConstructor
 public class EmployeeServiceImpl implements IEmployee {

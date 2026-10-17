@@ -1,6 +1,7 @@
 package tn.esprit.autoloc.Services;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import tn.esprit.autoloc.Entities.Contrat;
 import tn.esprit.autoloc.Repositories.ContratRepository;
 
@@ -8,6 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@Service
 
 @RequiredArgsConstructor
 public class ContratServiceImpl implements IContrat {

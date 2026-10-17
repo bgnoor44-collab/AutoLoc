@@ -1,12 +1,14 @@
 package tn.esprit.autoloc.Services;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import tn.esprit.autoloc.Entities.Client;
 import tn.esprit.autoloc.Repositories.ClientRepository;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+@Service
 @RequiredArgsConstructor
 public class ClientServiceImpl implements IClient{
     private final ClientRepository clientRepository;
@@ -33,5 +35,12 @@ public class ClientServiceImpl implements IClient{
     @Override
     public Client recupererClienByid(Long id) {
         return clientRepository.findById(id).orElseThrow();
+    }
+    @Override
+    public Client modifierClient(Client client) {
+        if (clientRepository.existsById(client.getIdClient())) {
+            return clientRepository.save(client);
+        }
+        throw new RuntimeException("Client introuvable avec l'id : " + client.getIdClient());
     }
 }

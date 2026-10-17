@@ -1,12 +1,14 @@
 package tn.esprit.autoloc.Services;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import tn.esprit.autoloc.Entities.Maintenance;
 import tn.esprit.autoloc.Repositories.MaintenanceRepository;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+@Service
 
 @RequiredArgsConstructor
 public class MaintenanceServiceImpl implements IMaintenance {
