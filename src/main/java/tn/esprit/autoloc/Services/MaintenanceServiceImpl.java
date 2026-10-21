@@ -38,4 +38,11 @@ public class MaintenanceServiceImpl implements IMaintenance {
     public Maintenance recupererMaintenanceById(Long id) {
         return maintenanceRepository.findById(id).orElseThrow();
     }
+    @Override
+    public Maintenance modifierMaintenance(Maintenance maintenance) {
+        if (maintenanceRepository.existsById(maintenance.getIdMaintenance())) {
+            return maintenanceRepository.save(maintenance);
+        }
+        throw new RuntimeException("Maintenance introuvable avec l'id : " + maintenance.getIdMaintenance());
+    }
 }

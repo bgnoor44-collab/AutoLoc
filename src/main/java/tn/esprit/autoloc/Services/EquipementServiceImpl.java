@@ -38,4 +38,11 @@ public class EquipementServiceImpl implements IEquipement {
     public Equipement recupererEquipementById(Long id) {
         return equipementRepository.findById(id).orElseThrow();
     }
+    @Override
+    public Equipement modifierEquipement(Equipement equipement) {
+        if (equipementRepository.existsById(equipement.getIdEquipement())) {
+            return equipementRepository.save(equipement);
+        }
+        throw new RuntimeException("Equipement introuvable avec l'id : " + equipement.getIdEquipement());
+    }
 }

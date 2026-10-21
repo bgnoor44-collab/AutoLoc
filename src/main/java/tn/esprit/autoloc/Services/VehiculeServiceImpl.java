@@ -28,6 +28,13 @@ public class VehiculeServiceImpl implements IVehicule {
     public List<Vehicule> recupererVehicules() {
         return vehiculeRepository.findAll();
     }
+    @Override
+    public Vehicule modifierVehicule(Vehicule vehicule) {
+        if (vehiculeRepository.existsById(vehicule.getIdVehicule())) {
+            return vehiculeRepository.save(vehicule);
+        }
+        throw new RuntimeException("Vehicule introuvable avec l'id : " + vehicule.getIdVehicule());
+    }
 
     @Override
     public Set<Vehicule> findVehicules() {

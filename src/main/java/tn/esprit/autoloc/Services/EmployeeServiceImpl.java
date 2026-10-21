@@ -40,4 +40,11 @@ public class EmployeeServiceImpl implements IEmployee {
     public Employee recupererEmployeeById(Long id) {
         return employeeRepository.findById(id).orElseThrow();
     }
+    @Override
+    public Employee modifierEmployee(Employee employee) {
+        if (employeeRepository.existsById(employee.getIdEmployee())) {
+            return employeeRepository.save(employee);
+        }
+        throw new RuntimeException("Employee introuvable avec l'id : " + employee.getIdEmployee());
+    }
 }

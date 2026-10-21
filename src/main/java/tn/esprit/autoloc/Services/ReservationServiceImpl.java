@@ -28,6 +28,13 @@ public class ReservationServiceImpl implements IReservation {
     public List<Reservation> recupererReservations() {
         return reservationRepository.findAll();
     }
+    @Override
+    public Reservation modifierReservation(Reservation reservation) {
+        if (reservationRepository.existsById(reservation.getIdReservation())) {
+            return reservationRepository.save(reservation);
+        }
+        throw new RuntimeException("Reservation introuvable avec l'id : " + reservation.getIdReservation());
+    }
 
     @Override
     public Set<Reservation> findReservations() {

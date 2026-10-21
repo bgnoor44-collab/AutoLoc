@@ -39,4 +39,11 @@ public class ContratServiceImpl implements IContrat {
     public Contrat recupererContratById(Long id) {
         return contratRepository.findById(id).orElseThrow();
     }
+    @Override
+    public Contrat modifierContrat(Contrat contrat) {
+        if (contratRepository.existsById(contrat.getIdContrat())) {
+            return contratRepository.save(contrat);
+        }
+        throw new RuntimeException("Contrat introuvable avec l'id : " + contrat.getIdContrat());
+    }
 }

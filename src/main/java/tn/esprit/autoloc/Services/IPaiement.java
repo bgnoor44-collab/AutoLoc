@@ -8,7 +8,7 @@ import java.util.Set;
 public interface IPaiement {
     Paiement ajouterPaiement(Paiement paiement);
     void supprimerPaiement(Long id);
-
+    Paiement modifierPaiement(Paiement paiement);
     List<Paiement> recupererPaiements();
     Set<Paiement> findPaiements();
     Paiement recupererPaiementById(Long id);

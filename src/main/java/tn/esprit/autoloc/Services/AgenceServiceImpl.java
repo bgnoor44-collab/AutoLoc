@@ -37,4 +37,11 @@ public class AgenceServiceImpl implements IAgence{
     public Agence recupererAgenceByid(Long id) {
         return agenceRepository.findById(id).orElseThrow();
     }
+    @Override
+    public Agence modifierAgence(Agence agence) {
+        if (agenceRepository.existsById(agence.getIdAgence())) {
+            return agenceRepository.save(agence);
+        }
+        throw new RuntimeException("Agence introuvable avec l'id : " + agence.getIdAgence());
+    }
 }

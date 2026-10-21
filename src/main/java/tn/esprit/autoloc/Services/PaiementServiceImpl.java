@@ -38,4 +38,11 @@ public class PaiementServiceImpl implements IPaiement {
     public Paiement recupererPaiementById(Long id) {
         return paiementRepository.findById(id).orElseThrow();
     }
+    @Override
+    public Paiement modifierPaiement(Paiement paiement) {
+        if (paiementRepository.existsById(paiement.getIdPaiement())) {
+            return paiementRepository.save(paiement);
+        }
+        throw new RuntimeException("Paiement introuvable avec l'id : " + paiement.getIdPaiement());
+    }
 }
