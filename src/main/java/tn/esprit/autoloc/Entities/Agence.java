@@ -1,5 +1,6 @@
 package tn.esprit.autoloc.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,8 +32,10 @@ public class Agence {
 
 
     @OneToMany(mappedBy = "agence", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Employee> employees = new ArrayList<>();
 
     @OneToMany(mappedBy = "agence", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Vehicule> vehicules = new ArrayList<>();
 }

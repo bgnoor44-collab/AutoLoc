@@ -1,5 +1,6 @@
 package tn.esprit.autoloc.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -30,9 +31,11 @@ public class Contrat {
 
 
     @OneToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     @JoinColumn(name = "reservation_id", nullable = false, unique = true)
     private Reservation reservation;
 
     @OneToMany(mappedBy = "contrat", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Paiement> paiements = new ArrayList<>();
 }
